@@ -9,7 +9,7 @@ import c001.com.daicent.btth_08_09.model.Student;
 import c001.com.daicent.btth_08_09.model.Unit;
 import java.util.*;
 
-public class Main implements Comparator<Student> {
+public class Main implements Comparator<Student>  {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         StudentManagement studentManagement = new StudentManagement();
@@ -47,8 +47,9 @@ public class Main implements Comparator<Student> {
         Map<Student,Class> studentMap = new HashMap<>();
 //        studentMap.put(student1,clazz1);
         studentMap.put(student2,clazz2);
-        studentMap.put(student3,clazz3);
+        studentMap.put(student3,clazz2);
         studentMap.put(student4,clazz1);
+        System.out.println(studentMap.size());
         System.out.println("------------------");
         System.out.println("_____Thông tin học sinh_____ ");
         System.out.println(studentMap);
@@ -62,17 +63,19 @@ public class Main implements Comparator<Student> {
         students.add(student2);
         students.add(student3);
         students.add(student4);
-        Collections.sort(students, new Comparator<Student>() {
+        students.sort(new Comparator<Student>() {
             @Override
             public int compare(Student o1, Student o2) {
                 return o1.getAge() - o2.getAge();
             }
         });
         students.forEach(System.out::println);
-        System.out.println("------------------");
-        System.out.println("nhập tên học sinh cần tìm: ");
-        String search= scanner.nextLine();
-        studentManagement.findByName(search);
+        do {
+            System.out.println("------------------");
+            System.out.println("nhập tên học sinh cần tìm: ");
+            String search= scanner.nextLine();
+            studentManagement.findByName(search);
+        }while (true);
     }
 
     @Override
